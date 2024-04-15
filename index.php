@@ -40,12 +40,63 @@
 
 ];
 
-foreach ($hotels as $hotel) {
-  echo '<br>';
-  echo $hotel['name'];
-  echo '<br>';
-  echo $hotel['description'] . ' | ' . $hotel['parking'] . ' | ' .  $hotel['vote'] . ' | ' . $hotel['distance_to_center'];
-  echo '<br>';
-}
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS link -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <title>PHP Hotel</title>
+</head>
+
+<body>
+  
+<div class="container mt-5">
+  <div class="row row-cols-5">
+
+  <?php foreach ($hotels as $hotel) : ?>
+
+    <div class="col">
+      <div class="card">
+
+        <div class="card-header">
+          <h4 class="card-title"> <?php echo $hotel['name'] ?> </h4>
+        </div>
+
+        <div class="card-body">
+
+          <p class="card-text"> <?php echo $hotel['description'] ?> </p>
+          
+        </div>
+        
+        <div class="card-footer text-muted">
+          
+          <?php if ($hotel['parking']) : ?>
+            <p class="card-text"> Parcheggio custodito: SI </p>
+            
+            <?php else : ?>
+              <p class="card-text"> Parcheggio custodito: NO </p>
+
+          <?php endif; ?>
+
+          <p> Vote: <?php echo $hotel['vote'] ?>/5 </p>
+          <p> Distance to center: <?php echo $hotel['distance_to_center'] ?> Km </p>
+
+        </div>
+
+      </div>
+    </div>
+
+  <?php endforeach; ?>
+
+  </div>
+</div>
+
+</body>
+
+</html>
